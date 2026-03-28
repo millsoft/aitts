@@ -5,6 +5,11 @@ on:
     types:
       - published
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Existing release tag to attach APK to (example: v2.1.0)"
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -13,12 +18,20 @@ jobs:
   build-apk:
     runs-on: ubuntu-latest
     env:
-      RELEASE_TAG: ${{ github.event.release.tag_name || github.ref_name }}
+      RELEASE_TAG: ${{ inputs.release_tag || github.event.release.tag_name || github.ref_name }}
     steps:
+      - name: Validate release tag
+        run: |
+          set -euo pipefail
+          if [ -z "${RELEASE_TAG}" ]; then
+            echo "RELEASE_TAG is empty. Provide workflow input 'release_tag' or trigger from a published release."
+            exit 1
+          fi
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.release.tag_name || github.ref_name }}
+          ref: ${{ env.RELEASE_TAG }}
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -55,7 +68,7 @@ jobs:
           if-no-files-found: error
 
       - name: Upload APK to GitHub Release
-        if: ${{ github.event_name == 'release' }}
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ env.RELEASE_TAG }}
           files: ${{ steps.prepare.outputs.apk_file }}

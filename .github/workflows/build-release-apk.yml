@@ -1,0 +1,61 @@
+name: Build Release APK
+
+on:
+  release:
+    types:
+      - published
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_TAG: ${{ github.event.release.tag_name || github.ref_name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name || github.ref_name }}
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build release APK
+        run: ./gradlew assembleRelease
+
+      - name: Prepare asset name
+        id: prepare
+        run: |
+          set -euo pipefail
+          apk_path="$(find app/build/outputs/apk/release -maxdepth 1 -name '*.apk' | head -n 1)"
+          if [ -z "${apk_path}" ]; then
+            echo "No APK produced in app/build/outputs/apk/release"
+            exit 1
+          fi
+          tag="${RELEASE_TAG}"
+          version="${tag#v}"
+          output="aitts-${version}.apk"
+          cp "${apk_path}" "${output}"
+          echo "apk_file=${output}" >> "${GITHUB_OUTPUT}"
+
+      - name: Upload workflow artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-apk
+          path: ${{ steps.prepare.outputs.apk_file }}
+          if-no-files-found: error
+
+      - name: Upload APK to GitHub Release
+        if: ${{ github.event_name == 'release' }}
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.prepare.outputs.apk_file }}

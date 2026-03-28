@@ -50,7 +50,7 @@ Author: Michael Milawski - Millsoft
 
 This project uses semantic-release and GitHub Actions:
 
-- On every push to `main`/`master`, semantic-release evaluates conventional commits and creates the next GitHub Release with a semantic version tag (for example `v2.1.0`).
+- On every push to `release`, semantic-release evaluates conventional commits and creates the next GitHub Release with a semantic version tag (for example `v2.1.0`).
 - When a release is published, GitHub Actions builds the Android release APK and uploads it to that release.
 
 The Android `versionName` and `versionCode` are derived from the release tag during CI builds.

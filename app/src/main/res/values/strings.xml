@@ -1,0 +1,27 @@
+<resources>
+    <!-- The name of the application. -->
+    <string name="app_name" translatable="false">aiTTS</string>
+    <!-- The heading of the first (and only) preference fragment -->
+    <string name="voice">Voice</string>
+    <string name="tap_on_language_and_select_a_voice"><b>How to use?</b> Set aiTTS as your default TTS engine in the android settings. Here you can change the voice for your current language. Click on TEST to hear the voice for the current language.</string>
+    <string name="select_voice_for">Select a voice for</string>
+    <string name="google_tts_api_key">API KEY</string>
+    <string name="invalid_api_key">Invalid API key</string>
+    <string name="help">Help</string>
+    <string name="cancel">Cancel</string>
+    <string name="about">About</string>
+    <string name="preview_voice">Preview voice</string>
+    <string name="voice_preview_text">This is a preview of the selected voice.</string>
+    <string name="voice_preview_failed">Voice preview failed</string>
+    <string name="startup_loading_title">Loading voices...</string>
+    <string name="startup_error_title">Could not load voices</string>
+    <string name="retry">Try again</string>
+    <string name="edit_api_key">Edit API key</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="welcome_text">aiTTS is a speech engine that uses Google Cloud Text-to-Speech API. You will need to get that API key first and enter it here. <b>Do you have the API key?</b></string>
+    <string name="welcome_to_aitts">Welcome to aiTTS</string>
+    <string name="btn_no_key">No - <a href="#">Show me how to get the API key!</a></string>
+    <string name="yes_i_have_the_api_key">Enter API key</string>
+
+</resources>

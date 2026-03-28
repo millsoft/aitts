@@ -1,0 +1,27 @@
+<resources>
+    <!-- The name of the application. -->
+    <!-- The heading of the first (and only) preference fragment -->
+    <string name="voice">Stimme</string>
+    <string name="tap_on_language_and_select_a_voice"><b>Anleitung</b>: In den Android Einstellungen muss als erstes die Text-zu-Sprache Engine auf "aiTTS" geändert werden. Auf dieser Seite hier können Sie die Stimme für die aktuelle Sprache ändern. Klicken Sie auf TEST um die ausgewählte Stimme auszuprobieren</string>
+    <string name="google_tts_api_key">API KEY</string>
+    <string name="help">Hilfe</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="select_voice_for">Stimme auswählen für: </string>
+    <string name="about">Über</string>
+    <string name="preview_voice">Stimme anhören</string>
+    <string name="voice_preview_text">Dies ist eine Vorschau der ausgewählten Stimme.</string>
+    <string name="voice_preview_failed">Stimmenvorschau fehlgeschlagen</string>
+    <string name="startup_loading_title">Stimmen werden geladen...</string>
+    <string name="startup_error_title">Stimmen konnten nicht geladen werden</string>
+    <string name="retry">Erneut versuchen</string>
+    <string name="edit_api_key">API-Schlüssel bearbeiten</string>
+
+    <string name="welcome_text">
+        aiTTS ist eine Sprach-Engine, die auf die Google Cloud Text-to-Speech API zugreift. Sie brauchen einen API-Key, um diese Engine nutzen zu können. <b>Haben Sie bereits einen API-Key?</b>
+        </string>
+    <string name="welcome_to_aitts">Willkommen bei aiTTS</string>
+    <string name="btn_no_key">Nein - <a href="#">Zeig mir wie ich diesen API-Key bekomme!</a></string>
+    <string name="yes_i_have_the_api_key">API-KEY EINGEBEN</string>
+    <string name="invalid_api_key">Ungültiger API Key</string>
+
+</resources>

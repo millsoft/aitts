@@ -1,0 +1,26 @@
+<resources>
+
+    <string name="voice">Głos</string>
+    <string name="tap_on_language_and_select_a_voice"><b>Jak korzystać?</b> Ustaw aiTTS jako domyślny TTS engine w ustawieniach Androida. Tutaj możesz zmienić głos dla swojego obecnego języka. Kliknij TEST, aby usłyszeć głos dla bieżącego języka.</string>
+    <string name="select_voice_for">Wybierz głos dla</string>
+    <string name="google_tts_api_key">API KEY</string>
+    <string name="help">Pomoc</string>
+    <string name="cancel">Anuluj</string>
+    <string name="about">O aiTTS</string>
+    <string name="preview_voice">Odsłuchaj głos</string>
+    <string name="voice_preview_text">To jest podgląd wybranego głosu.</string>
+    <string name="voice_preview_failed">Podgląd głosu nie powiódł się</string>
+    <string name="startup_loading_title">Ładowanie głosów...</string>
+    <string name="startup_error_title">Nie udało się załadować głosów</string>
+    <string name="retry">Spróbuj ponownie</string>
+    <string name="edit_api_key">Edytuj klucz API</string>
+
+
+    <string name="welcome_to_aitts">Witaj w aiTTS</string>
+    <string name="welcome_text">aiTTS to silnik TTS, który korzysta z Google Cloud Text-to-Speech API. Najpierw musisz zdobyć klucz API i wprowadzić go tutaj.<b>Czy masz klucz API?</b></string>
+    <string name="btn_no_key">Nie - <a href="#">Pokaż, jak zdobyć klucz API!</a></string>
+    <string name="yes_i_have_the_api_key">Wprowadź API Key</string>
+    <string name="invalid_api_key">Nieprawidlowy API Key</string>
+
+
+</resources>

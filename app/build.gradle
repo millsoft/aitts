@@ -1,13 +1,25 @@
 apply plugin: 'com.android.application'
 
+def defaultVersionName = "2.0.0"
+def releaseTag = (System.getenv("RELEASE_TAG") ?: System.getenv("GITHUB_REF_NAME"))?.trim()
+if (releaseTag?.startsWith("v")) {
+    releaseTag = releaseTag.substring(1)
+}
+def semverPattern = ~/^\d+\.\d+\.\d+([\-+][0-9A-Za-z\.-]+)?$/
+def resolvedVersionName = (releaseTag && (releaseTag ==~ semverPattern)) ? releaseTag : defaultVersionName
+
+def coreVersion = resolvedVersionName.tokenize('-')[0].tokenize('+')[0]
+def semverParts = coreVersion.tokenize('.').collect { it as Integer }
+def resolvedVersionCode = (semverParts[0] * 10000) + (semverParts[1] * 100) + semverParts[2]
+
 android {
     compileSdkVersion 36
     defaultConfig {
         applicationId "com.millsoft.aitts"
         minSdkVersion 21
         targetSdkVersion 36
-        versionCode 108
-        versionName "2.0.0"
+        versionCode resolvedVersionCode
+        versionName resolvedVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
